@@ -1,0 +1,1 @@
+export const CHANGE_NEWS_LIST = 'CHANGE_NEWS_LIST';
