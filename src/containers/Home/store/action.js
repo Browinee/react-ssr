@@ -1,4 +1,5 @@
 import { CHANGE_NEWS_LIST } from './constant';
+import config from "../../../../config";
 const changeList = (list) => ({
     type: CHANGE_NEWS_LIST,
     list
