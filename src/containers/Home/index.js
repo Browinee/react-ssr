@@ -15,7 +15,6 @@ const Home = (props) => {
 
 	return (
 		<div>
-			<Header />
 			{getList()}
 			<button onClick={()=>{alert('click')}}>
 				click
