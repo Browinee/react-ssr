@@ -3,9 +3,10 @@ import {renderToString} from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom';
 import {Provider} from "react-redux";
 import {renderRoutes} from "react-router-config";
+import {Helmet} from "react-helmet";
 
 export const render = (store, routes, req) => {
-
+    const helmet = Helmet.renderStatic();
     const content = renderToString((
         <Provider store={store}>
             <StaticRouter location={req.path} context={{}}>
@@ -16,7 +17,8 @@ export const render = (store, routes, req) => {
     return `
 		<html>
 			<head>
-				<title>ssr</title>
+				${helmet.title.toString()}
+                ${helmet.meta.toString()}
 			</head>
 			<body>
 				<div id="root">${content}</div>

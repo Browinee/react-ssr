@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Header from '../../components/Header';
+import {Helmet} from "react-helmet";
 import { connect } from 'react-redux';
 import {getHomeList} from "./store/action";
 
@@ -14,12 +14,18 @@ const Home = (props) => {
 	}, []);
 
 	return (
-		<div>
-			{getList()}
-			<button onClick={()=>{alert('click')}}>
-				click
-			</button>
-		</div>
+		<React.Fragment>
+			<Helmet>
+				<title>Home!!</title>
+				<meta name="description" content="justin"></meta>
+			</Helmet>
+			<div>
+				{getList()}
+				<button onClick={()=>{alert('click')}}>
+					click
+				</button>
+			</div>
+		</React.Fragment>
 	)
 }
 
