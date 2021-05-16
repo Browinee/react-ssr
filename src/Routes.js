@@ -1,11 +1,40 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
 import Home from './containers/Home';
-import Login from './containers/Login';
+import Translation from './containers/Translation';
+import Login from "./containers/Login";
+import App from "./containers/App/index";
+import NotFound from "./containers/NotFound";
 
-export default (
-	<div>
-		<Route path='/' exact component={Home}></Route>
-		<Route path='/login' exact component={Login}></Route>
-	</div>
-)
+export default [
+    {
+    	path: '/',
+    	component: App,
+    	loadData: App.loadData,
+    	routes: [
+    		{
+    			path: '/',
+    			component: Home,
+    			exact: true,
+    			loadData: Home.loadData,
+    			key: 'Home'
+    		},
+    		{
+    			path: '/login',
+    			component: Login,
+    			exact: true,
+    			loadData: Login.loadData,
+    			key: 'Login'
+    		},
+			{
+				path: '/translation',
+				component: Translation,
+				exact: true,
+				loadData: Translation.loadData,
+				key: 'Translation'
+			},
+			{
+				component: NotFound
+			}
+    	]
+    }
+];
