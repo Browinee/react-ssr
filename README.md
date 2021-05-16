@@ -25,7 +25,7 @@
 
 ## Reference
 - [React服務器渲染原理解析與實踐](https://coding.imooc.com/learn/list/276.html)
-
+- https://juejin.cn/post/6844903881390964744#heading-25
 ## LICENSE
 
 MIT
