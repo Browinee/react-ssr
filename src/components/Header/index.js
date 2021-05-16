@@ -9,8 +9,9 @@ const Header = (props) => {
             &nbsp;
             {isLogin
                 ? <React.Fragment>
-                    <div  onClick={logoutHandler}>Logout</div>
                     <Link to='/translation'>Translation</Link>
+                    &nbsp;
+                    <div  onClick={logoutHandler}>Logout</div>
                 </React.Fragment>
                 : <div  onClick={loginHandler}>Login</div>}
         </div>

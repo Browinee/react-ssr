@@ -15,7 +15,7 @@ app.use('/api', proxy(`${config.baseUrl}`, {
 }));
 
 app.get('*', function (req, res) {
-    const store = getStore();
+    const store = getStore(req);
     const matchedRoutes = matchRoutes(routes, req.path);
     const promises = [];
     matchedRoutes.forEach(item => {

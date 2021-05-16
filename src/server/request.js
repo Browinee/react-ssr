@@ -1,8 +1,13 @@
 import axios from 'axios';
 import config from '../../config';
-export default axios.create({
+const createInstance = (req) => axios.create({
   baseURL: config.baseUrl,
   param: {
     secret: config.secret
+  },
+  header: {
+    cookie: req.get("cookie")|| "",
   }
 })
+
+export default createInstance;
