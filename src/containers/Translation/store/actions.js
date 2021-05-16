@@ -7,7 +7,7 @@ const changeTranslationList = (list) => ({
 
 export const getTranslationList = (isServer = false) => {
 	return (dispatch, getState, axiosInstance) => {
-		return axiosInstance.get(`/api/translations.json?sercet=${config.secret}`).then((res) => {
+		return axiosInstance.get(`/api/translations.json`).then((res) => {
 			const list = Array.from({length: 20}).map((_, idx) => {
 				return {
 					id: idx,

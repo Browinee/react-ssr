@@ -2,24 +2,26 @@ import React, {useEffect} from 'react';
 import {Helmet} from "react-helmet";
 import { connect } from 'react-redux';
 import {getHomeList} from "./store/action";
+import styles from "./style.css";
+import withStyle from "../../withStyle";
 
 const Home = (props) => {
 	const getList = () => {
 		const { list } = props;
-		return list.map(item => <div key={item.id}>{item.title}</div>)
+		return (list || []).map(item => <div className={styles.item} key={item.id}>{item.title}</div>)
 	}
 
 	useEffect(() => {
-		props.list.length === 0 && props.getHomeList();
+		props.list && props.list.length === 0 && props.getHomeList();
 	}, []);
-
+	console.log("Styles", styles);
 	return (
 		<React.Fragment>
 			<Helmet>
 				<title>Home!!</title>
 				<meta name="description" content="justin"></meta>
 			</Helmet>
-			<div>
+			<div className={styles.container}>
 				{getList()}
 				<button onClick={()=>{alert('click')}}>
 					click
@@ -45,4 +47,4 @@ const mapDispatchToProps = dispatch => {
 		getHomeList: () => dispatch(getHomeList()),
 	}
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyle(Home, styles));

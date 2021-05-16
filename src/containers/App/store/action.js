@@ -8,7 +8,7 @@ const changeLogin = (value) => ({
 
 export const getLoginInfo = () => {
     return (dispatch, getState, axiosInstance) => {
-        return axiosInstance.get(`/api/login.json?secret=${config.secret}`)
+        return axiosInstance.get(`/api/login.json`)
             .then((res) => {
                 dispatch(changeLogin(res.data.data.login))
             });
@@ -16,7 +16,7 @@ export const getLoginInfo = () => {
 }
 export const logout = () => {
     return (dispatch, getState, axiosInstance) => {
-        return axiosInstance.get(`/api/logout.json?secret=${config.secret}`)
+        return axiosInstance.get(`/api/logout.json`)
             .then((res) => {
                 console.log("res", res);
                 dispatch(changeLogin(res.data.data.login))

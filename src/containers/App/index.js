@@ -30,8 +30,8 @@ const App = (props) => {
     )
 }
 
-App.loadData = (store) => {
-    // return store.dispatch(getLoginInfo());
-}
+// App.loadData = (store) => {
+//     // return store.dispatch(getLoginInfo());
+// }
 
 export default App;

@@ -2,27 +2,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getTranslationList} from './store/actions.js';
 import {Redirect} from "react-router-dom";
+import {Helmet} from "react-helmet";
+import withStyle from "../../withStyle";
+import styles from './style.css';
 
 class Translation extends Component {
     getList() {
         const {list} = this.props;
-        console.log("List87", list)
-        return list.map(item => <div key={item.id}>{item.title}</div>)
-    }
-
-    render() {
-        const {isLogin} = this.props;
-        console.log("isLogin", isLogin);
-        if(isLogin) {
-            return (
-                <div>
-                    {this.getList()}
-                </div>
-            )
-        } else {
-            return <Redirect to="/" />
-        }
-
+        return list.map(item => <div className={styles.item} key={item.id}>{item.title}</div>)
     }
 
     componentDidMount() {
@@ -30,6 +17,28 @@ class Translation extends Component {
             this.props.getTranslationList();
         }
     }
+
+    render() {
+        const {isLogin} = this.props;
+        if (isLogin) {
+            return (
+                <React.Fragment>
+                    <Helmet>
+                        <title>Translation</title>
+                        <meta name="description" content="Translation"></meta>
+                    </Helmet>
+                    <div className={styles.container}>
+                        {this.getList()}
+                    </div>
+                </React.Fragment>
+
+            )
+        } else {
+            return <Redirect to="/"/>
+        }
+
+    }
+
 }
 
 Translation.loadData = (store) => {
@@ -47,4 +56,4 @@ const mapDispatchToProps = dispatch => ({
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Translation);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyle(Translation, styles));
